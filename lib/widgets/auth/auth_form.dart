@@ -94,6 +94,9 @@ class _AuthFormState extends State<AuthForm> {
                               _pickedImage), //only pass "pointer" of the function and not to run it
                         TextFormField(
                           key: ValueKey('email'),
+                          autocorrect: false,
+                          textCapitalization: TextCapitalization.none,
+                          enableSuggestions: false,
                           validator: (value) {
                             if (value.isEmpty || !value.contains('@')) {
                               return 'Please enter a valid email address.';
@@ -111,6 +114,9 @@ class _AuthFormState extends State<AuthForm> {
                         if (!_isLogin) //responsive login applied
                           TextFormField(
                             key: ValueKey('username'),
+                            autocorrect: true,
+                            textCapitalization: TextCapitalization.words,
+                            enableSuggestions: false,
                             validator: (value) {
                               if (value.isEmpty || value.length < 4) {
                                 return 'Please enter at least 4 characters.';

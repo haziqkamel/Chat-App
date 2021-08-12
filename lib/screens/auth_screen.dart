@@ -25,7 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
     bool isLogin,
     BuildContext ctx,
   ) async {
-    AuthResult authResult;
+    UserCredential userCredential;
     // try by checking isLogin == true? Default isLogin is true, once user click create new account flatbutton it will change to false
     //If true, try FirebaseAuth.instance.signInWithEmailAndPassword
     //If false, try FirebaseAuth.instace.createUserWithEmailAndPassword
@@ -34,26 +34,26 @@ class _AuthScreenState extends State<AuthScreen> {
         _isLoading = true;
       });
       if (isLogin) {
-        authResult = await _auth.signInWithEmailAndPassword(
+        userCredential = await _auth.signInWithEmailAndPassword(
             email: email, password: password);
       } else {
-        authResult = await _auth.createUserWithEmailAndPassword(
+        userCredential = await _auth.createUserWithEmailAndPassword(
             email: email, password: password);
 
         //Storing image during sign up
         final ref = FirebaseStorage.instance
             .ref()
             .child('user_image')
-            .child(authResult.user.uid + '.jpg');
+            .child(userCredential.user.uid + '.jpg');
 
-        await ref.putFile(image).onComplete;
+        await ref.putFile(image);
         final imageUrl = await ref.getDownloadURL();
 
         //let Firestore create a new collection 'users' with document from user.uid and create a new data<map> username and email
-        await Firestore.instance
+        await FirebaseFirestore.instance
             .collection('users')
-            .document(authResult.user.uid)
-            .setData({
+            .doc(userCredential.user.uid)
+            .set({
           'username': username,
           'email': email,
           'image_url': imageUrl,
