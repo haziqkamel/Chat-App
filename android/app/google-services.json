@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "171616412641",
+    "project_id": "flutter-chat-app-haziqkamel",
+    "storage_bucket": "flutter-chat-app-haziqkamel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:171616412641:android:a9244da91ae141950e68a0",
+        "android_client_info": {
+          "package_name": "com.haziqkamel.chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "171616412641-7qfgdjag3qng85vfu6e094tlq4ls5f6p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU-WGnFVTgqqb8YhiDUhW-R1FO2ow_QW0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "171616412641-7qfgdjag3qng85vfu6e094tlq4ls5f6p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
